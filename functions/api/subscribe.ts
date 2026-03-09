@@ -44,7 +44,7 @@ export const onRequestPost = async (context: any) => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        from: 'onboarding@resend.dev',
+        from: "Drippia <onboarding@resend.dev>",
         to: email,
         subject: '¡Bienvenido a la Beta de Drippia! ☕',
         html: `
