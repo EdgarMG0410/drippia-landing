@@ -1,23 +1,23 @@
 ---
-import GradientBackground from "./GradientBackground";
+import Aurora from "./Aurora";
 ---
 
-<section class="h-screen bg-white flex items-center justify-center p-0 lg:p-4">
-  <!-- Contenedor interno centrado con altura 100vh - 2rem -->
-  <div class="relative w-full h-full lg:h-[calc(100vh-2rem)] lg:rounded-[40px] overflow-hidden border-0 lg:border-4 lg:border-white">
-    <!-- Gradient Background -->
-    <div class="absolute inset-0 z-0">
-      <GradientBackground client:load />
+<section class="h-screen bg-gradient-to-br from-zinc-900 via-neutral-800 to-stone-900 overflow-x-hidden">
+  <!-- Contenedor full width y full height -->
+  <div class="relative w-full h-full overflow-hidden">
+    <!-- Aurora Background -->
+    <div class="absolute inset-0 z-0 w-full h-full">
+      <Aurora client:load colorStops={["#a8a8a8","#4a4a4a","#787878"]} amplitude={1.2} blend={0.7} />
     </div>
 
     <!-- Grid de dos columnas en desktop, una columna en mobile -->
-    <div class="relative z-10 h-full grid grid-cols-1 lg:grid-cols-2 lg:items-center">
+    <div class="relative z-10 h-full flex flex-col lg:grid lg:grid-cols-2 lg:items-center">
       <!-- Columna de texto -->
-      <div class="px-6 py-12 lg:px-8 lg:py-16 xl:px-24 xl:py-20 flex flex-col justify-center h-full lg:h-auto order-2 lg:order-1">
+      <div class="px-6 pt-24 pb-4 lg:px-8 lg:py-16 xl:px-24 xl:py-20 flex flex-col justify-center lg:justify-center shrink-0 lg:h-auto order-1">
         <div class="hidden lg:block lg:flex-1"></div>
         <div class="text-center lg:text-left">
           <h1
-            class="font-sans text-5xl md:text-6xl lg:text-9xl font-light mb-6 leading-tight text-white"
+            class="font-sans text-5xl md:text-6xl lg:text-9xl font-light mb-4 lg:mb-6 leading-[1.10] text-white"
           >
             Prepara café
             <br />
@@ -25,39 +25,73 @@ import GradientBackground from "./GradientBackground";
           </h1>
 
           <p
-            class="font-display text-lg md:text-2xl text-white/90 mb-8 leading-normal max-w-2xl mx-auto lg:mx-0"
+            class="font-display text-sm md:text-2xl text-white/90 mb-4 lg:mb-8 leading-snug max-w-md lg:max-w-2xl mx-auto lg:mx-0"
           >
             Tu compañero personal para dominar el arte del café de especialidad.
             Guías paso a paso que extraen el máximo potencial de cada grano.
           </p>
 
-          <div class="flex flex-row gap-2 lg:gap-4 mb-8 justify-center lg:justify-start">
-            <button
-              class="bg-carbon-black text-white px-4 py-3 lg:px-10 lg:py-5 rounded-xl font-bold text-sm lg:text-base hover:scale-105 transition-transform duration-300 flex items-center justify-center gap-2 lg:gap-3"
-            >
-              <svg class="w-5 h-5 lg:w-6 lg:h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path
-                  d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
-                ></path>
-              </svg>
-              <span class="hidden sm:inline">App Store</span>
-            </button>
-            <button
-              class="bg-carbon-black text-white px-4 py-3 lg:px-10 lg:py-5 rounded-xl font-bold text-sm lg:text-base hover:scale-105 transition-transform duration-300 flex items-center justify-center gap-2 lg:gap-3"
-            >
-              <svg class="w-5 h-5 lg:w-6 lg:h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path
-                  d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"
-                ></path>
-              </svg>
-              <span class="hidden sm:inline">Google Play</span>
-            </button>
+          <div class="mb-2 lg:mb-4">
+            <p class="text-white text-xs lg:text-lg font-semibold mb-2 lg:mb-3 text-center lg:text-left">
+                Próximamente
+              </p>
+            <div class="flex flex-row gap-2 lg:gap-4 mb-2 lg:mb-3 justify-center lg:justify-start">
+              <div
+                class="bg-black text-white px-4 py-3 lg:px-6 lg:py-4 rounded-lg flex items-center gap-3 border border-white/10"
+              >
+                <svg class="w-6 h-6 lg:w-7 lg:h-7" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
+                  ></path>
+                </svg>
+                <div class="flex flex-col items-start">
+                  <span class="text-sm lg:text-lg font-bold -mt-1">App Store</span>
+                </div>
+              </div>
+              <div
+                class="bg-black text-white px-4 py-3 lg:px-6 lg:py-4 rounded-lg flex items-center gap-3 border border-white/10"
+              >
+                <svg class="w-6 h-6 lg:w-7 lg:h-7" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"
+                  ></path>
+                </svg>
+                <div class="flex flex-col items-start">
+                  <span class="text-sm lg:text-lg font-bold -mt-1">Google Play</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mt-2 lg:mt-8">
+              <p class="text-white/80 text-xs lg:text-base mb-2 lg:mb-4 text-center lg:text-left">
+                Accede a la beta exclusiva
+              </p>
+              
+              <form class="flex flex-row gap-2 max-w-md mx-auto lg:mx-0">
+                <input
+                  type="email"
+                  placeholder="tu@email.com"
+                  class="flex-1 px-3 py-2 lg:px-4 lg:py-3 text-sm rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent backdrop-blur-sm"
+                  required
+                />
+                <button
+                  type="submit"
+                  class="px-4 py-2 lg:px-6 lg:py-3 text-sm lg:text-base bg-white text-carbon-black font-bold rounded-lg hover:scale-105 transition-transform duration-300 whitespace-nowrap"
+                >
+                  Registrar
+                </button>
+              </form>
+              
+              <p class="text-white/50 text-[10px] lg:text-xs mt-2 lg:mt-3 text-left">
+                * Cupos limitados
+              </p>
+            </div>
           </div>
         </div>
         <div class="hidden lg:block lg:flex-1"></div>
 
         <button
-          class="hidden lg:flex text-white/60 text-sm items-center gap-2 hover:text-white transition-colors animate-bounce-slow"
+          class="hidden lg:flex text-white/60 text-sm items-center gap-2 hover:text-white transition-colors animate-bounce-slow absolute bottom-5 left-1/2 -translate-x-1/2"
         >
           <svg
             class="w-5 h-5"
@@ -75,34 +109,22 @@ import GradientBackground from "./GradientBackground";
         </button>
       </div>
 
-      <!-- Columna de mockups - detrás en mobile, a la derecha en desktop -->
+      <!-- Columna de mockups - abajo en mobile, a la derecha en desktop -->
       <div
-        class="absolute inset-0 lg:relative lg:h-full flex items-center justify-center lg:justify-end opacity-20 lg:opacity-100 order-1 lg:order-2"
+        class="relative flex-1 lg:relative lg:h-full flex items-end lg:items-center justify-center lg:justify-end order-2"
       >
-        <!-- Aquí van las imágenes de los teléfonos con perspectiva 3D -->
+        <!-- Imagen de mockups de teléfonos -->
         <div
-          class="relative w-full h-full flex items-center justify-center lg:justify-end lg:pr-8 xl:pr-16"
+          class="relative w-full h-full flex items-end lg:items-center justify-center lg:justify-end lg:pr-0"
         >
-          <!-- Placeholder para teléfonos -->
-          <div class="text-white/10 text-center">
-            <div class="flex gap-4 items-center justify-center">
-              <div
-                class="w-48 h-96 border-4 border-white/10 rounded-[40px] transform rotate-[-15deg] translate-x-8"
-              >
-              </div>
-              <div
-                class="w-48 h-96 border-4 border-white/10 rounded-[40px] transform rotate-[5deg] translate-y-8"
-              >
-              </div>
-              <div
-                class="w-48 h-96 border-4 border-white/10 rounded-[40px] transform rotate-[15deg] translate-x-[-8px]"
-              >
-              </div>
-            </div>
-            <p class="text-sm font-medium mt-8">
-              Espacio para mockups de teléfonos
-            </p>
-          </div>
+          <picture>
+            <source media="(min-width: 1024px)" srcset="/assets/drippia-hero.png" />
+            <img 
+              src="/assets/hero-mobile.png" 
+              alt="Drippia App Mockups" 
+              class="w-auto h-[85%] lg:h-[95%] xl:h-full object-contain scale-[2.5] lg:scale-150 xl:scale-[1.75]"
+            />
+          </picture>
         </div>
       </div>
     </div>
