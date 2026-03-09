@@ -9,9 +9,11 @@ export const onRequestPost = async (context: any) => {
     // Obtener email del body
     let email: string;
     try {
-      const data = await request.json();
+      const body = await request.text();
+      const data = JSON.parse(body);
       email = data.email;
-    } catch {
+    } catch (e) {
+      console.error('Error parsing request:', e);
       return new Response(
         JSON.stringify({ error: 'Invalid request body' }),
         { status: 400, headers: { 'Content-Type': 'application/json' } }
@@ -22,6 +24,15 @@ export const onRequestPost = async (context: any) => {
       return new Response(
         JSON.stringify({ error: 'Email inválido' }),
         { status: 400, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+
+    // Verificar que existe la API key
+    if (!env.RESEND_API_KEY) {
+      console.error('RESEND_API_KEY not configured');
+      return new Response(
+        JSON.stringify({ error: 'Server configuration error' }),
+        { status: 500, headers: { 'Content-Type': 'application/json' } }
       );
     }
 
@@ -44,39 +55,56 @@ export const onRequestPost = async (context: any) => {
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Bienvenido a Drippia</title>
           </head>
-          <body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #f5f5f5;">
-            <table role="presentation" style="width: 100%; border-collapse: collapse;">
+          <body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: linear-gradient(135deg, #18181b 0%, #27272a 50%, #3f3f46 100%);">
+            <table role="presentation" style="width: 100%; border-collapse: collapse; min-height: 100vh;">
               <tr>
-                <td align="center" style="padding: 40px 20px;">
-                  <table role="presentation" style="max-width: 600px; width: 100%; background-color: #ffffff; border-radius: 16px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                <td align="center" style="padding: 60px 20px;">
+                  <table role="presentation" style="max-width: 600px; width: 100%; background: linear-gradient(135deg, #1C1C1C 0%, #2a2a2a 100%); border-radius: 24px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); border: 1px solid rgba(255, 255, 255, 0.1);">
+                    <!-- Logo y Header -->
                     <tr>
-                      <td style="background: linear-gradient(135deg, #1C1C1C 0%, #3a3a3a 100%); padding: 40px 40px 60px; border-radius: 16px 16px 0 0; text-align: center;">
-                        <h1 style="margin: 0; color: #ffffff; font-size: 32px; font-weight: 300; letter-spacing: -0.5px;">
-                          ☕ Bienvenido a Drippia
+                      <td style="padding: 50px 40px 30px; text-align: center; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                        <img src="https://drippia.edgar-e33.workers.dev/assets/logowhite.svg" alt="Drippia" style="height: 60px; width: auto; margin-bottom: 20px;" />
+                        <h1 style="margin: 0; color: #ffffff; font-size: 36px; font-weight: 300; letter-spacing: -1px;">
+                          Bienvenido a Drippia
                         </h1>
                       </td>
                     </tr>
+                    <!-- Contenido Principal -->
                     <tr>
-                      <td style="padding: 40px;">
-                        <h2 style="margin: 0 0 20px; color: #1C1C1C; font-size: 24px; font-weight: 600;">
-                          ¡Gracias por registrarte!
+                      <td style="padding: 50px 40px;">
+                        <h2 style="margin: 0 0 24px; color: #ffffff; font-size: 28px; font-weight: 300; line-height: 1.3;">
+                          Prepara café<br/>excepcional
                         </h2>
-                        <p style="margin: 0 0 16px; color: #4a4a4a; font-size: 16px; line-height: 1.6;">
-                          Estás oficialmente en la lista de espera para acceder a la <strong>beta exclusiva de Drippia</strong>.
+                        <p style="margin: 0 0 20px; color: rgba(255, 255, 255, 0.9); font-size: 18px; line-height: 1.7;">
+                          Estás oficialmente en la <strong style="color: #ffffff;">lista de espera</strong> para acceder a la beta exclusiva de Drippia.
                         </p>
-                        <p style="margin: 24px 0 0; color: #666; font-size: 14px; line-height: 1.6;">
-                          Cupos limitados disponibles. Te contactaremos pronto.
+                        <p style="margin: 0 0 20px; color: rgba(255, 255, 255, 0.7); font-size: 16px; line-height: 1.6;">
+                          Tu compañero personal para dominar el arte del café de especialidad. Guías paso a paso que extraen el máximo potencial de cada grano.
                         </p>
+                        <!-- Badge de Beta -->
+                        <div style="margin: 30px 0; padding: 20px; background: rgba(255, 255, 255, 0.05); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                          <p style="margin: 0; color: rgba(255, 255, 255, 0.6); font-size: 14px; text-align: center;">
+                            ☕ <strong style="color: #ffffff;">Cupos limitados</strong> • Te contactaremos pronto
+                          </p>
+                        </div>
                       </td>
                     </tr>
+                    <!-- Footer -->
                     <tr>
-                      <td style="padding: 30px 40px; background-color: #f9f9f9; border-radius: 0 0 16px 16px; text-align: center;">
-                        <p style="margin: 0 0 8px; color: #1C1C1C; font-size: 14px; font-weight: 600;">
+                      <td style="padding: 30px 40px; background: rgba(0, 0, 0, 0.3); border-radius: 0 0 24px 24px; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+                        <p style="margin: 0 0 8px; color: rgba(255, 255, 255, 0.9); font-size: 15px; font-weight: 300;">
                           El equipo de Drippia
+                        </p>
+                        <p style="margin: 0; color: rgba(255, 255, 255, 0.4); font-size: 13px;">
+                          Innovando el arte del café
                         </p>
                       </td>
                     </tr>
                   </table>
+                  <!-- Texto legal pequeño -->
+                  <p style="margin: 30px 0 0; color: rgba(255, 255, 255, 0.3); font-size: 12px; text-align: center; max-width: 500px;">
+                    Recibiste este correo porque te registraste para la beta de Drippia.
+                  </p>
                 </td>
               </tr>
             </table>
