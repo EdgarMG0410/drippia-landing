@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@theme {
+  --color-carbon-black: #1C1C1C;
+  --color-alabaster-grey: #DADDD8;
+  --color-soft-linen: #ECEBE4;
+  --color-platinum: #EEF0F2;
+  --color-ghost-white: #FAFAFF;
+  --color-accent-blue: #42A5F5;
+  --color-accent-orange: #FFA726;
+
+  --font-family-sans: Ranade, system-ui, sans-serif;
+  --font-family-display: Excon, system-ui, sans-serif;
+
+  --radius-xl: 20px;
+  --radius-2xl: 28px;
+}
+
+@font-face {
+  font-family: 'Excon';
+  src: url('/fonts/Excon-Variable.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ranade';
+  src: url('/fonts/Ranade-Variable.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ranade';
+  src: url('/fonts/Ranade-VariableItalic.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+button:active {
+  transform: scale(0.98);
+}
