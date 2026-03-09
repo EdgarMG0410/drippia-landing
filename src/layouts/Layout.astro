@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
 
 interface Props {
   title: string;
@@ -21,6 +22,7 @@ const { title, description = 'Perfecciona tu café con guías paso a paso impuls
     <title>{title}</title>
   </head>
   <body class="bg-ghost-white text-carbon-black font-sans antialiased overflow-x-hidden">
+    <Navbar />
     <slot />
   </body>
 </html>

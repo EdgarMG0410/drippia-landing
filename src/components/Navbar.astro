@@ -1,0 +1,65 @@
+---
+---
+
+<nav class="fixed top-0 left-0 right-0 z-50 bg-transparent">
+  <div class="w-full mx-auto px-6 lg:px-8 xl:px-24">
+    <div class="flex items-center justify-between h-16 lg:h-auto lg:pt-8">
+      
+      <!-- Mobile: Email Icon (Left) -->
+      <a 
+        href="mailto:edgar@innovatio.dev" 
+        class="lg:hidden text-white/80 hover:text-white transition-colors p-2"
+        aria-label="Contact"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+        </svg>
+      </a>
+
+      <!-- Logo (Left on Desktop, Center on Mobile) -->
+      <div class="flex-1 lg:flex-none flex justify-center lg:justify-start">
+        <a href="/" class="flex items-center gap-3">
+          <img src="/assets/logowhite.svg" alt="Drippia" class="h-13 lg:h-19 w-auto" />
+          <span class="text-white font-sans text-xl lg:text-2xl font-light hidden sm:block">Drippia</span>
+        </a>
+      </div>
+
+      <!-- Desktop: Navigation Links (Commented) -->
+      <!-- <div class="hidden lg:flex items-center space-x-8">
+        <a href="#features" class="text-white/80 hover:text-white transition-colors text-sm font-medium">
+          Features
+        </a>
+        <a href="#how-it-works" class="text-white/80 hover:text-white transition-colors text-sm font-medium">
+          How it works
+        </a>
+        <a href="#pricing" class="text-white/80 hover:text-white transition-colors text-sm font-medium">
+          Pricing
+        </a>
+      </div> -->
+
+      <!-- Mobile: Menu Icon (Right) -->
+      <button 
+        class="lg:hidden text-white/80 hover:text-white transition-colors p-2"
+        aria-label="Menu"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+
+      <!-- Desktop: Contact Button -->
+      <div class="hidden lg:block">
+        <a 
+          href="mailto:edgar@innovatio.dev"
+          class="inline-flex items-center gap-2 px-6 py-2.5 bg-white text-[#1C1C1C] font-semibold rounded-lg hover:scale-105 transition-transform duration-300"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          Contact
+        </a>
+      </div>
+
+    </div>
+  </div>
+</nav>
