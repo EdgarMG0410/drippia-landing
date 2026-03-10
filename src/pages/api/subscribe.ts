@@ -1,10 +1,18 @@
 import type { APIRoute } from 'astro';
+import nodemailer from 'nodemailer';
 
 export const prerender = false;
 
 export const POST: APIRoute = async ({ request }) => {
   try {
-    const apiKey = import.meta.env.RESEND_API_KEY;
+    const smtpConfig = {
+      host: import.meta.env.SMTP_HOST || 'mail.smtp2go.com',
+      port: parseInt(import.meta.env.SMTP_PORT || '2525'),
+      auth: {
+        user: import.meta.env.SMTP_USERNAME || 'menus.innovatio.dev',
+        pass: import.meta.env.SMTP_PASSWORD
+      }
+    };
     
     // Obtener email del body
     let email: string;
@@ -27,24 +35,22 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    // Verificar que existe la API key
-    if (!apiKey) {
-      console.error('RESEND_API_KEY not configured');
+    // Verificar configuración SMTP
+    if (!smtpConfig.auth.pass) {
+      console.error('SMTP_PASSWORD not configured');
       return new Response(
         JSON.stringify({ error: 'Server configuration error' }),
         { status: 500, headers: { 'Content-Type': 'application/json' } }
       );
     }
 
-    // Enviar email de confirmación al usuario usando Resend API
-    const userEmailResponse = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${apiKey}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        from: 'onboarding@resend.dev',
+    // Crear transporter de nodemailer
+    const transporter = nodemailer.createTransport(smtpConfig);
+
+    // Enviar email de confirmación al usuario
+    try {
+      await transporter.sendMail({
+        from: '"Drippia" <noreply@menus.innovatio.dev>',
         to: email,
         subject: '¡Bienvenido a la Beta de Drippia! ☕',
         html: `
@@ -111,24 +117,16 @@ export const POST: APIRoute = async ({ request }) => {
           </body>
           </html>
         `
-      })
-    });
-
-    if (!userEmailResponse.ok) {
-      const errorData = await userEmailResponse.text();
-      console.error('Resend API error:', errorData);
+      });
+    } catch (emailError) {
+      console.error('Error sending user email:', emailError);
       throw new Error('Failed to send user email');
     }
 
     // Enviar notificación al equipo
-    await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${apiKey}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        from: 'onboarding@resend.dev',
+    try {
+      await transporter.sendMail({
+        from: '"Drippia" <noreply@menus.innovatio.dev>',
         to: 'edgar@innovatio.dev',
         subject: '🎯 Nuevo registro para Beta de Drippia',
         html: `
@@ -141,8 +139,11 @@ export const POST: APIRoute = async ({ request }) => {
           </body>
           </html>
         `
-      })
-    });
+      });
+    } catch (notificationError) {
+      console.error('Error sending notification email:', notificationError);
+      // No lanzar error, el registro fue exitoso aunque falle la notificación
+    }
 
     return new Response(
       JSON.stringify({ success: true, message: 'Registro exitoso' }),
