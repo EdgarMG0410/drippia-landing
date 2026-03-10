@@ -1,10 +1,10 @@
-interface Env {
-  RESEND_API_KEY: string;
-}
+import type { APIRoute } from 'astro';
 
-export const onRequestPost = async (context: any) => {
+export const prerender = false;
+
+export const POST: APIRoute = async ({ request }) => {
   try {
-    const { request, env } = context;
+    const apiKey = import.meta.env.RESEND_API_KEY;
     
     // Obtener email del body
     let email: string;
@@ -28,7 +28,7 @@ export const onRequestPost = async (context: any) => {
     }
 
     // Verificar que existe la API key
-    if (!env.RESEND_API_KEY) {
+    if (!apiKey) {
       console.error('RESEND_API_KEY not configured');
       return new Response(
         JSON.stringify({ error: 'Server configuration error' }),
@@ -40,11 +40,11 @@ export const onRequestPost = async (context: any) => {
     const userEmailResponse = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${env.RESEND_API_KEY}`,
+        'Authorization': `Bearer ${apiKey}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        from: "Drippia <onboarding@resend.dev>",
+        from: 'onboarding@resend.dev',
         to: email,
         subject: '¡Bienvenido a la Beta de Drippia! ☕',
         html: `
@@ -115,6 +115,8 @@ export const onRequestPost = async (context: any) => {
     });
 
     if (!userEmailResponse.ok) {
+      const errorData = await userEmailResponse.text();
+      console.error('Resend API error:', errorData);
       throw new Error('Failed to send user email');
     }
 
@@ -122,7 +124,7 @@ export const onRequestPost = async (context: any) => {
     await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${env.RESEND_API_KEY}`,
+        'Authorization': `Bearer ${apiKey}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
