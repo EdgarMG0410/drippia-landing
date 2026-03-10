@@ -6,11 +6,11 @@ export const prerender = false;
 export const POST: APIRoute = async ({ request }) => {
   try {
     const smtpConfig = {
-      host: import.meta.env.SMTP_HOST || 'mail.smtp2go.com',
-      port: parseInt(import.meta.env.SMTP_PORT || '2525'),
+      host: process.env.SMTP_HOST || 'mail.smtp2go.com',
+      port: parseInt(process.env.SMTP_PORT || '2525'),
       auth: {
-        user: import.meta.env.SMTP_USERNAME || 'menus.innovatio.dev',
-        pass: import.meta.env.SMTP_PASSWORD
+        user: process.env.SMTP_USERNAME || 'menus.innovatio.dev',
+        pass: process.env.SMTP_PASSWORD
       }
     };
     
@@ -36,7 +36,7 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     // Verificar configuración SMTP
-    if (!smtpConfig.auth.pass) {
+    if (!process.env.SMTP_PASSWORD) {
       console.error('SMTP_PASSWORD not configured');
       return new Response(
         JSON.stringify({ error: 'Server configuration error' }),
