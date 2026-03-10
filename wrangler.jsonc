@@ -1,17 +1,25 @@
 {
-  "main": "dist/_worker.js/index.js",
-  "name": "drippia",
-  "compatibility_date": "2025-09-27",
-  "compatibility_flags": [
-    "global_fetch_strictly_public",
-    "nodejs_compat"
-  ],
-  "assets": {
-    "binding": "ASSETS",
-    "directory": "dist"
-  },
-  "observability": {
-    "enabled": true
-  },
-  "$schema": "node_modules/wrangler/config-schema.json"
+	"main": "dist/_worker.js/index.js",
+	"name": "drippia",
+	"compatibility_date": "2025-09-27",
+	"compatibility_flags": [
+		"global_fetch_strictly_public",
+		"nodejs_compat"
+	],
+	"assets": {
+		"binding": "ASSETS",
+		"directory": "dist"
+	},
+	"observability": {
+		"enabled": true
+	},
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"vars": {
+		"MAIL_FROM_ADDRESS": "noreply@menus.innovatio.dev",
+		"MAIL_FROM_NAME": "Drippia",
+		"MAIL_MAILER": "smtp",
+		"SMTP_HOST": "mail.smtp2go.com",
+		"SMTP_PORT": "2525",
+		"SMTP_USERNAME": "menus.innovatio.dev"
+	}
 }
