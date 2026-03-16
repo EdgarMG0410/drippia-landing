@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "skills": {
+    "astro": {
+      "source": "astrolicious/agent-skills",
+      "sourceType": "github",
+      "computedHash": "597a4587f30f1152d3ab2923e84db842a18604e09e16885ffa067730fb435d9d"
+    },
+    "awwwards-animations": {
+      "source": "devmartinese/awwwards-animations-skill",
+      "sourceType": "github",
+      "computedHash": "03ea7b6b4daf3de348c530ec0670cd63c21bc060591f5ca7f193234008a941b6"
+    },
+    "awwwards-landing-page": {
+      "source": "eng0ai/eng0-template-skills",
+      "sourceType": "github",
+      "computedHash": "7b9fe005bd664db3d8e0cde36a3750958de3bdb8f8a8d2ec0116dbd0261e1fa4"
+    },
+    "landing-page-design": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "computedHash": "63fb730c8eb97e5847100ab67c760d63b442b19f3d33968106ddddb0daaeaf22"
+    }
+  }
+}

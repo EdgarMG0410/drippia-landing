@@ -11,8 +11,8 @@
   --color-soft-linen: #ECEBE4;
   --color-platinum: #EEF0F2;
   --color-ghost-white: #FAFAFF;
-  --color-accent-blue: #42A5F5;
-  --color-accent-orange: #FFA726;
+  --color-accent-gray: #9CA3AF;
+  --color-accent-dark: #374151;
 
   --font-family-sans: Ranade, system-ui, sans-serif;
   --font-family-display: Excon, system-ui, sans-serif;
@@ -179,4 +179,33 @@ button:active {
   html {
     @apply font-sans;
   }
+}
+
+/* Parallax and fade-in animations */
+.animate-fade-in {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Smooth scrolling behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced hover effects */
+.bg-white\/5:hover,
+.bg-zinc-800\/50:hover {
+  transform: translateY(-2px);
+  transition: all 0.3s ease-out;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }

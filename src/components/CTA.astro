@@ -1,22 +1,189 @@
 ---
 ---
 
-<section class="py-24 md:py-32 px-6 bg-carbon-black text-white">
-  <div class="max-w-5xl mx-auto text-center">
-    <h2 class="font-display text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
-      No más café desperdiciado.
-      <span class="text-white/60">Solo preparaciones excepcionales.</span>
-    </h2>
-    <p class="text-2xl md:text-3xl text-white/90 mb-16 leading-relaxed max-w-3xl mx-auto">
-      Únete a miles de amantes del café que ya dominan el arte de la preparación perfecta.
-    </p>
-    <div class="flex flex-col sm:flex-row gap-6 justify-center">
-      <button class="bg-white text-carbon-black px-10 py-5 rounded-full font-bold text-lg hover:scale-105 transition-transform duration-300 shadow-xl">
-        Descargar en App Store
-      </button>
-      <button class="bg-transparent text-white border-2 border-white px-10 py-5 rounded-full font-bold text-lg hover:bg-white/10 transition-all duration-300">
-        Descargar en Google Play
-      </button>
+<section class="py-24 md:py-32 px-6 bg-zinc-900 text-white relative overflow-hidden">
+  <div class="max-w-6xl mx-auto text-center relative z-10">
+    <!-- Header -->
+    <div class="mb-12">
+      <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-2 mb-8">
+        <span class="w-2 h-2 bg-white/60 rounded-full animate-pulse"></span>
+        <span class="text-white/80 font-semibold text-sm">🔥 Beta Abierta - Cupos Limitados</span>
+      </div>
+      
+      <h2 class="font-display text-[clamp(2.5rem,6vw,4rem)] md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-8 leading-tight">
+        Tu próximo café
+        <span class="block text-white/90">será perfecto</span>
+      </h2>
+      
+      <p class="text-xl md:text-2xl lg:text-3xl text-white/80 mb-12 leading-relaxed max-w-4xl mx-auto">
+        Deja de frustrarte con cafés mediocres. 
+        <strong class="text-white">Únete a 15,000+ amantes del café</strong> que ya preparan como profesionales.
+      </p>
+    </div>
+
+    <!-- Beta Registration Form -->
+    <div class="bg-white/5 rounded-3xl p-8 md:p-12 border border-white/10 backdrop-blur-sm mb-12 max-w-2xl mx-auto">
+      <h3 class="text-2xl md:text-3xl font-bold mb-4 text-white">
+        🎯 Reserva tu lugar en la Beta
+      </h3>
+      <p class="text-white/70 mb-8">
+        Sé el primero en probar Drippia. Acceso anticipado + beneficios exclusivos.
+      </p>
+      
+      <form id="beta-form" class="space-y-4">
+        <div class="flex flex-col sm:flex-row gap-4">
+          <input
+            type="email"
+            id="beta-email"
+            placeholder="tu@email.com"
+            class="flex-1 bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
+            required
+          />
+          <button
+            type="submit"
+            class="bg-white text-zinc-900 px-8 py-3 rounded-xl font-bold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-white/25"
+          >
+            Unirme a Beta
+          </button>
+        </div>
+        <p class="text-xs text-white/60 text-center">
+          Al registrarte, aceptas recibir actualizaciones sobre Drippia. Sin spam, prometido.
+        </p>
+      </form>
+      
+      <!-- Success/Error Messages -->
+      <div class="hidden mt-4 p-4 bg-white/10 border border-white/20 rounded-xl">
+        <p class="text-white/60 font-semibold">✨ ¡Gracias! Te hemos agregado a la lista de espera.</p>
+      </div>
+      <div id="beta-error" class="hidden mt-4 p-4 bg-white/10 border border-white/20 rounded-xl">
+        <p class="text-white/60 font-semibold">❌ Error. Intenta de nuevo más tarde.</p>
+      </div>
+    </div>
+
+    <!-- App Download Buttons -->
+    <div class="space-y-6">
+      <p class="text-white/60 text-lg">
+        O descarga directamente cuando esté disponible:
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+        <button class="bg-black text-white px-8 py-4 rounded-xl font-bold hover:scale-105 transition-all duration-300 shadow-xl border border-zinc-800 flex items-center gap-3">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"></path>
+          </svg>
+          <div class="flex flex-col items-start">
+            <span class="text-xs text-white/60">Descargar en</span>
+            <span class="text-lg">App Store</span>
+          </div>
+        </button>
+        
+        <button class="bg-black text-white px-8 py-4 rounded-xl font-bold hover:scale-105 transition-all duration-300 shadow-xl border border-zinc-800 flex items-center gap-3">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"></path>
+          </svg>
+          <div class="flex flex-col items-start">
+            <span class="text-xs text-white/60">Disponible en</span>
+            <span class="text-lg">Google Play</span>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Social Proof -->
+    <div class="mt-16 pt-8 border-t border-zinc-800">
+      <p class="text-white/60 text-sm mb-4">
+        🎯 Únete a 15,234 cafeteros en la lista de espera
+      </p>
+      <div class="flex flex-wrap justify-center gap-6">
+        <div class="flex items-center gap-2">
+          <span class="text-white/60">⭐</span>
+          <span class="text-white/70 text-sm">4.8/5 rating</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-white/60">✓</span>
+          <span class="text-white/70 text-sm">Beta testers activos</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-white/60">🚀</span>
+          <span class="text-white/70 text-sm">Lanzamiento Q2 2024</span>
+        </div>
+      </div>
     </div>
   </div>
+
+  <script>
+    document.getElementById('beta-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const email = document.getElementById('beta-email').value;
+      const successDiv = document.getElementById('beta-success');
+      const errorDiv = document.getElementById('beta-error');
+      const button = e.target.querySelector('button[type="submit"]');
+      
+      // Hide messages
+      successDiv.classList.add('hidden');
+      errorDiv.classList.add('hidden');
+      
+      // Show loading state
+      button.textContent = 'Registrando...';
+      button.disabled = true;
+      
+      try {
+        const response = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email }),
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+          successDiv.classList.remove('hidden');
+          document.getElementById('beta-email').value = '';
+          button.textContent = '✅ Registrado';
+          
+          // Track conversion (if you have analytics)
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'beta_signup', {
+              'event_category': 'engagement',
+              'event_label': 'beta_form'
+            });
+          }
+        } else {
+          throw new Error(data.error || 'Registration failed');
+        }
+      } catch (error) {
+        errorDiv.classList.remove('hidden');
+        button.textContent = 'Unirme a Beta';
+      }
+      
+      button.disabled = false;
+    });
+  </script>
 </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-in');
+        }
+      });
+    }, observerOptions);
+
+    // Observe CTA elements
+    const ctaElements = document.querySelectorAll('.bg-zinc-800\\/50, .bg-white\\/10');
+    ctaElements.forEach(el => {
+      observer.observe(el);
+    });
+  });
+</script>

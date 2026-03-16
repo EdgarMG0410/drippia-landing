@@ -1,0 +1,138 @@
+---
+---
+
+<section class="py-24 md:py-32 px-6 bg-zinc-900 text-white relative">
+  <div class="max-w-7xl mx-auto relative z-10">
+    <!-- Header -->
+    <div class="text-center mb-20">
+      <h2 class="font-display text-[clamp(2rem,5vw,3.5rem)] md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+        Amantes del café
+        <span class="block text-white/80">aman Drippia</span>
+      </h2>
+      <p class="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed">
+        No solo lo decimos nosotros. Miles de baristas caseros ya transformaron su café.
+      </p>
+    </div>
+
+    <!-- Testimonials Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+      
+      <!-- Testimonial 1 -->
+      <div class="bg-white/5 rounded-3xl p-8 border border-white/10 backdrop-blur-sm">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center border border-white/20">
+            <span class="text-xl font-bold">MC</span>
+          </div>
+          <div>
+            <h4 class="text-white font-semibold">María Chen</h4>
+            <p class="text-white/60 text-sm">Barista casera, Ciudad de México</p>
+          </div>
+        </div>
+        <div class="flex mb-4">
+          <span class="text-zinc-300">★★★★★</span>
+        </div>
+        <p class="text-white/80 leading-relaxed mb-4">
+          "El Coach IA cambió completamente mi café. Pasé de preparar café amargo a tener recetas perfectas para cada grano. Mi Geisha nunca había sabido tan bien."
+        </p>
+        <div class="flex items-center gap-2 text-sm text-white/60">
+          <span>☕</span>
+          <span>V60 • Chemex • 127 brews registrados</span>
+        </div>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="bg-white/5 rounded-3xl p-8 border border-white/10 backdrop-blur-sm">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center border border-white/20">
+            <span class="text-xl font-bold">JR</span>
+          </div>
+          <div>
+            <h4 class="text-white font-semibold">Juan Rodríguez</h4>
+            <p class="text-white/60 text-sm">Estudiante de café, Bogotá</p>
+          </div>
+        </div>
+        <div class="flex mb-4">
+          <span class="text-zinc-300">★★★★★</span>
+        </div>
+        <p class="text-white/80 leading-relaxed mb-4">
+          "La biblioteca de cafés es increíble. Puedo llevar el control de todos mis granos especiales y compartirlos con amigos. El historial de preparaciones me ayudó a mejorar mi consistencia."
+        </p>
+        <div class="flex items-center gap-2 text-sm text-white/60">
+          <span>☕</span>
+          <span>Aeropress • French Press • 89 cafés guardados</span>
+        </div>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="bg-white/5 rounded-3xl p-8 border border-white/10 backdrop-blur-sm">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center border border-white/20">
+            <span class="text-xl font-bold">SL</span>
+          </div>
+          <div>
+            <h4 class="text-white font-semibold">Sofía López</h4>
+            <p class="text-white/60 text-sm">Diseñadora, Buenos Aires</p>
+          </div>
+        </div>
+        <div class="flex mb-4">
+          <span class="text-zinc-300">★★★★★</span>
+        </div>
+        <p class="text-white/80 leading-relaxed mb-4">
+          "Las preparaciones guiadas con timer son perfectas. Antes siempre me perdía en los tiempos, ahora cada brew es consistente. El troubleshooting del Coach me salvó varias veces."
+        </p>
+        <div class="flex items-center gap-2 text-sm text-white/60">
+          <span>☕</span>
+          <span>Chemex • Kalita Wave • 92% éxito</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Stats Section -->
+    <div class="bg-white/5 rounded-3xl p-8 md:p-12 border border-white/10 backdrop-blur-sm">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div>
+          <div class="text-3xl md:text-4xl font-bold text-white/80 mb-2">15K+</div>
+          <div class="text-sm md:text-base text-white/70">Usuarios activos</div>
+        </div>
+        <div>
+          <div class="text-3xl md:text-4xl font-bold text-white/80 mb-2">250K+</div>
+          <div class="text-sm md:text-base text-white/70">Brews registrados</div>
+        </div>
+        <div>
+          <div class="text-3xl md:text-4xl font-bold text-white/80 mb-2">50K+</div>
+          <div class="text-sm md:text-base text-white/70">Cafés guardados</div>
+        </div>
+        <div>
+          <div class="text-3xl md:text-4xl font-bold text-white/80 mb-2">4.8</div>
+          <div class="text-sm md:text-base text-white/70">Rating en App Store</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('animate-fade-in');
+          }, index * 100);
+        }
+      });
+    }, observerOptions);
+
+    // Observe testimonial cards
+    document.querySelectorAll('.bg-white\\/5').forEach(el => {
+      observer.observe(el);
+    });
+  });
+</script>
