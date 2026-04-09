@@ -1,0 +1,16 @@
+---
+const methods = ['V60', 'AeroPress', 'Chemex', 'French Press', 'Espresso', 'Hario Switch', 'Kalita Wave', 'Moka Pot'];
+---
+
+<section class="py-16 md:py-20 overflow-hidden border-y border-palette-700">
+  <div class="flex w-max animate-marquee">
+    {[...methods, ...methods, ...methods, ...methods].map((method) => (
+      <span class="flex-shrink-0 flex items-center mx-6 md:mx-10">
+        <span class="font-display text-[clamp(1.8rem,4.5vw,3.5rem)] font-bold text-palette-700 hover:text-palette-50 transition-colors duration-500 cursor-default select-none">
+          {method}
+        </span>
+        <span class="ml-6 md:ml-10 text-palette-700 text-xl select-none">·</span>
+      </span>
+    ))}
+  </div>
+</section>
